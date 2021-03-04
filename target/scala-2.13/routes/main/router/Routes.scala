@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/leon/projects/meerkat/meerkat-play/conf/routes
-// @DATE:Thu Mar 04 11:51:43 CET 2021
+// @DATE:Thu Mar 04 14:55:07 CET 2021
 
 package router
 
@@ -14,20 +14,20 @@ import _root_.controllers.Assets.Asset
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:1
-  v1_post_MeerkatRouter_0: v1.post.MeerkatRouter,
+  meerkat_MeerkatRouter_0: meerkat.MeerkatRouter,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:1
-    v1_post_MeerkatRouter_0: v1.post.MeerkatRouter
-  ) = this(errorHandler, v1_post_MeerkatRouter_0, "/")
+    meerkat_MeerkatRouter_0: meerkat.MeerkatRouter
+  ) = this(errorHandler, meerkat_MeerkatRouter_0, "/")
 
   def withPrefix(addPrefix: String): Routes = {
     val prefix = play.api.routing.Router.concatPrefix(addPrefix, this.prefix)
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, v1_post_MeerkatRouter_0, prefix)
+    new Routes(errorHandler, meerkat_MeerkatRouter_0, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -35,7 +35,7 @@ class Routes(
   }
 
   def documentation = List(
-    prefixed_v1_post_MeerkatRouter_0_0.router.documentation,
+    prefixed_meerkat_MeerkatRouter_0_0.router.documentation,
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -44,12 +44,12 @@ class Routes(
 
 
   // @LINE:1
-  private[this] val prefixed_v1_post_MeerkatRouter_0_0 = Include(v1_post_MeerkatRouter_0.withPrefix(this.prefix + (if (this.prefix.endsWith("/")) "" else "/") + "v1/posts"))
+  private[this] val prefixed_meerkat_MeerkatRouter_0_0 = Include(meerkat_MeerkatRouter_0.withPrefix(this.prefix + (if (this.prefix.endsWith("/")) "" else "/") + ""))
 
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
     // @LINE:1
-    case prefixed_v1_post_MeerkatRouter_0_0(handler) => handler
+    case prefixed_meerkat_MeerkatRouter_0_0(handler) => handler
   }
 }

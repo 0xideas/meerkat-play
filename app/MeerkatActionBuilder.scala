@@ -1,4 +1,4 @@
-package v1.post
+package meerkat
 
 import javax.inject.Inject
 
@@ -105,7 +105,7 @@ case class MeerkatControllerComponents @Inject()(
 /**
   * Exposes actions and handler to the PostController by wiring the injected state into the base class.
   */
-class PostBaseController @Inject()(pcc: MeerkatControllerComponents)
+class MeerkatBaseController @Inject()(pcc: MeerkatControllerComponents)
     extends BaseController
     with RequestMarkerContext {
   override protected def controllerComponents: ControllerComponents = pcc

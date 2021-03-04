@@ -1,4 +1,4 @@
-package v1.post
+package meerkat
 
 import javax.inject.Inject
 
@@ -7,11 +7,9 @@ import play.api.routing.SimpleRouter
 import play.api.routing.sird._
 
 /**
-  * Routes and URLs to the PostResource controller.
+  * Routes and URLs to the MeerkatResource controller.
   */
 class MeerkatRouter @Inject()(controller: MeerkatController) extends SimpleRouter {
-  val prefix = "/v1/posts"
-
 
   override def routes: Routes = {
     case GET(p"/generate") =>
@@ -19,6 +17,10 @@ class MeerkatRouter @Inject()(controller: MeerkatController) extends SimpleRoute
 
     case POST(p"/update") =>
       controller.update
+
+    case POST(p"/updateSession") =>
+      controller.updateSession
+
 
     case GET(p"/export") =>
       controller.export
