@@ -15,7 +15,7 @@ import v1.post.PageGenerator.pageGenerator
 /**
   * Takes HTTP requests and produces JSON.
   */
-class PostController @Inject()(cc: PostControllerComponents)(
+class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     implicit ec: ExecutionContext)
     extends PostBaseController(cc)
     with Circe{
@@ -61,7 +61,7 @@ class PostController @Inject()(cc: PostControllerComponents)(
   }
 
   private def processJsonPost[A]()(
-      implicit request: PostRequest[A]): Future[Result] = {
+      implicit request: MeerkatRequest[A]): Future[Result] = {
     def failure(badForm: Form[Update]): Future[Result] = {
       Future.successful(BadRequest(badForm.errorsAsJson))
     }
