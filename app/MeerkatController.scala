@@ -85,8 +85,7 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     }
 
     def success(input: UpdateSession): Future[Result] = {
-      println(input)
-      input.articleIds.map(articleId => pageGenerator.update(Some(articleId), input.headlines.map(i => idsToList(i)).toMap))
+      input.articleIds.map(articleId => pageGenerator.update(Some(articleId), input.headlines.map(i => idsToList(i))))
       Future.successful(Ok("Session update successful"))
     }
     formUpdateSession.bindFromRequest().fold(failure, success)
@@ -99,12 +98,12 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     }
 
     def success(input: Update): Future[Result] = {
-      println(input)
       val articleId = input.articleId match {
         case(GlobalVariables.NO_ARTICLE_SELECTED_ID) => None
         case(i) => Some(i)
       }
-      pageGenerator.update(articleId, input.headlines.map(i => idsToList(i)).toMap)
+      val input2 = input.headlines.map(i => idsToList(i))
+      pageGenerator.update(articleId, input2)
       Future.successful(Ok("Update successful"))
     }
     formUpdate.bindFromRequest().fold(failure, success)
