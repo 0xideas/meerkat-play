@@ -5,6 +5,7 @@ import javax.inject.Inject
 import play.api.routing.Router.Routes
 import play.api.routing.SimpleRouter
 import play.api.routing.sird._
+import meerkat.PageGenerator.Article
 
 /**
   * Routes and URLs to the MeerkatResource controller.
@@ -21,9 +22,11 @@ class MeerkatRouter @Inject()(controller: MeerkatController) extends SimpleRoute
     case POST(p"/updateSession") =>
       controller.updateSession
 
-
     case GET(p"/export") =>
       controller.export
+
+    case GET(p"/") =>
+      controller.renderPage
   }
 
 }

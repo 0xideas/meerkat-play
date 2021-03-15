@@ -10,7 +10,7 @@ import play.api.mvc._
 import play.api.libs.circe.Circe
 
 import scala.concurrent.{ExecutionContext, Future}
-import meerkat.PageGenerator.pageGenerator
+import meerkat.PageGenerator.{pageGenerator, Article}
 
 /**
   * Takes HTTP requests and produces JSON.
@@ -59,7 +59,7 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
 
   def generate: Action[AnyContent] = PostAction.async { implicit request =>
     logger.trace("generate: ")
-    val response = pageGenerator.generate()
+    val response = pageGenerator.generate().map{case(a, b, c) => (a, b.headline, c)}
     Future.successful(Ok(Json.obj("subpages" -> response)))
   }
   
@@ -78,6 +78,11 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
       Future.successful(Ok(pageGenerator.export()))
   }
 
+  def renderPage: Action[AnyContent] = PostAction.async { implicit request =>
+    val headlines = pageGenerator.generate()
+    val html = views.html.template(headlines.map(_._2))
+    Future.successful(Ok(html).as("text/html"))
+  }
 
   private def processJsonUpdateSession[A](implicit request: MeerkatRequest[A]): Future[Result] = {
     def failure(badForm: Form[UpdateSession]): Future[Result] = {

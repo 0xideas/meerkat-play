@@ -32,6 +32,8 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings"
     )
   )
+  
+//addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
 lazy val gatlingVersion = "3.3.1"
 lazy val gatling = (project in file("gatling"))
