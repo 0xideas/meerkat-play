@@ -79,8 +79,9 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
   }
 
   def renderPage: Action[AnyContent] = PostAction.async { implicit request =>
-    val headlines = pageGenerator.generate()
-    val html = views.html.template(headlines.map(_._2))
+    val headlines: List[(Int, Article, List[Int])] = pageGenerator.generate()
+    val headlines2 = headlines.map(_._2)
+    val html = views.html.renderPage(headlines2)
     Future.successful(Ok(html).as("text/html"))
   }
 

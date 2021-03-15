@@ -4,6 +4,10 @@
 
 !*.scala
 !*.xml
+!*.html
+!*.css
+!*.png
+!*.gif
 
 !build.sbt
 !.gitignore

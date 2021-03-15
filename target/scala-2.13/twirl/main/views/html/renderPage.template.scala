@@ -8,10 +8,10 @@ import _root_.play.twirl.api.JavaScript
 import _root_.play.twirl.api.Txt
 import _root_.play.twirl.api.Xml
 
-object template extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[List[Article],play.twirl.api.HtmlFormat.Appendable] {
+object renderPage extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[List[meerkat.PageGenerator.Article],play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(articles: List[Article]):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(articles: List[meerkat.PageGenerator.Article]):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
@@ -23,8 +23,8 @@ Seq[Any](format.raw/*2.1*/("""
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" type="text/css" href=""""),_display_(/*9.47*/routes/*9.53*/.Assets.versioned("css/plugins.css")),format.raw/*9.89*/("""">
-<link rel="stylesheet" type="text/css" href=""""),_display_(/*10.47*/routes/*10.53*/.Assets.versioned("css/style.css")),format.raw/*10.87*/("""">
+<link rel="stylesheet" type="text/css" href="controllers.Assets.at("assets/stylesheets/plugins.css")">
+<link rel="stylesheet" type="text/css" href="controllers.Assets.at("assets/stylesheets/style.css")">
 <style type="text/css">
 #freecssfooter"""),format.raw/*12.15*/("""{"""),format.raw/*12.16*/("""display:block;width:100%;padding:120px 0 20px;overflow:hidden;background-color:transparent;z-index:5000;text-align:center;"""),format.raw/*12.138*/("""}"""),format.raw/*12.139*/("""
 """),format.raw/*13.1*/("""#freecssfooter div#fcssholder div"""),format.raw/*13.34*/("""{"""),format.raw/*13.35*/("""display:none;"""),format.raw/*13.48*/("""}"""),format.raw/*13.49*/("""
@@ -154,9 +154,9 @@ var gaProperty = 'UA-120201777-1';var disableStr = 'ga-disable-' + gaProperty;if
     }
   }
 
-  def render(articles:List[Article]): play.twirl.api.HtmlFormat.Appendable = apply(articles)
+  def render(articles:List[meerkat.PageGenerator.Article]): play.twirl.api.HtmlFormat.Appendable = apply(articles)
 
-  def f:((List[Article]) => play.twirl.api.HtmlFormat.Appendable) = (articles) => apply(articles)
+  def f:((List[meerkat.PageGenerator.Article]) => play.twirl.api.HtmlFormat.Appendable) = (articles) => apply(articles)
 
   def ref: this.type = this
 
@@ -165,11 +165,11 @@ var gaProperty = 'UA-120201777-1';var disableStr = 'ga-disable-' + gaProperty;if
 
               /*
                   -- GENERATED --
-                  DATE: 2021-03-15T19:53:10.072081
-                  SOURCE: /home/leon/projects/meerkat/meerkat-play/app/views/template.scala.html
-                  HASH: fafb9be463d4855363ac99d12b6f841aac55f54e
-                  MATRIX: 576->1|695->27|722->28|1037->317|1051->323|1107->359|1183->408|1198->414|1253->448|1322->489|1351->490|1502->612|1532->613|1560->614|1621->647|1650->648|1691->661|1720->662|1748->663|1821->708|1850->709|1892->723|1921->724|1949->725|2024->772|2053->773|2106->798|2135->799|2163->800|2378->987|2407->988|2437->991|2719->1246|2747->1247|4336->2809|4376->2828|4405->2829|4633->3030|4676->3052|4930->3279|4970->3298|4999->3299|5227->3500|5270->3522|5470->3695|5510->3714|5539->3715|5767->3916|5810->3938|5993->4094|6033->4113|6062->4114|6290->4315|6333->4337|6570->4546|6611->4565|6641->4566|6870->4767|6914->4789|7715->5560|7746->5561|7802->5587|7833->5588|7862->5589|7910->5608|7940->5609|8128->5767|8159->5768|8188->5769|8241->5793|8271->5794|8350->5844|8380->5845|8445->5880|8476->5881|8627->6002|8658->6003
-                  LINES: 14->1|19->2|20->3|26->9|26->9|26->9|27->10|27->10|27->10|29->12|29->12|29->12|29->12|30->13|30->13|30->13|30->13|30->13|31->14|31->14|31->14|31->14|31->14|32->15|32->15|32->15|32->15|32->15|33->16|36->19|36->19|37->20|42->25|42->25|77->60|77->60|77->60|81->64|81->64|88->71|88->71|88->71|92->75|92->75|97->80|97->80|97->80|101->84|101->84|106->89|106->89|106->89|110->93|110->93|117->100|117->100|117->100|121->104|121->104|145->128|145->128|145->128|145->128|146->129|146->129|146->129|146->129|146->129|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130
+                  DATE: 2021-03-15T20:19:39.151349
+                  SOURCE: /home/leon/projects/meerkat/meerkat-play/app/views/renderPage.scala.html
+                  HASH: 91c5bd82fa5ae545aa21fb615c00710a039db4e8
+                  MATRIX: 600->1|741->49|768->50|1281->535|1310->536|1461->658|1491->659|1519->660|1580->693|1609->694|1650->707|1679->708|1707->709|1780->754|1809->755|1851->769|1880->770|1908->771|1983->818|2012->819|2065->844|2094->845|2122->846|2337->1033|2366->1034|2396->1037|2678->1292|2706->1293|4295->2855|4335->2874|4364->2875|4592->3076|4635->3098|4889->3325|4929->3344|4958->3345|5186->3546|5229->3568|5429->3741|5469->3760|5498->3761|5726->3962|5769->3984|5952->4140|5992->4159|6021->4160|6249->4361|6292->4383|6529->4592|6570->4611|6600->4612|6829->4813|6873->4835|7674->5606|7705->5607|7761->5633|7792->5634|7821->5635|7869->5654|7899->5655|8087->5813|8118->5814|8147->5815|8200->5839|8230->5840|8309->5890|8339->5891|8404->5926|8435->5927|8586->6048|8617->6049
+                  LINES: 14->1|19->2|20->3|29->12|29->12|29->12|29->12|30->13|30->13|30->13|30->13|30->13|31->14|31->14|31->14|31->14|31->14|32->15|32->15|32->15|32->15|32->15|33->16|36->19|36->19|37->20|42->25|42->25|77->60|77->60|77->60|81->64|81->64|88->71|88->71|88->71|92->75|92->75|97->80|97->80|97->80|101->84|101->84|106->89|106->89|106->89|110->93|110->93|117->100|117->100|117->100|121->104|121->104|145->128|145->128|145->128|145->128|146->129|146->129|146->129|146->129|146->129|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130
                   -- GENERATED --
               */
           

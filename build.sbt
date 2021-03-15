@@ -7,7 +7,7 @@ val circeVersion = "0.12.3"
 val breezeVersion = "1.1"
 
 lazy val root = (project in file("."))
-  .enablePlugins(PlayService, PlayLayoutPlugin, Common)
+  .enablePlugins(PlayService, PlayLayoutPlugin, Common, SbtTwirl)
   .settings(
     name := "play-scala-rest-api-example",
     scalaVersion := "2.13.4",
@@ -35,6 +35,8 @@ lazy val root = (project in file("."))
   
 //addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
+
+
 lazy val gatlingVersion = "3.3.1"
 lazy val gatling = (project in file("gatling"))
   .enablePlugins(GatlingPlugin)
@@ -45,6 +47,8 @@ lazy val gatling = (project in file("gatling"))
       "io.gatling" % "gatling-test-framework" % gatlingVersion % Test
     )
   )
+
+
 
 // Documentation for this project:
 //    sbt "project docs" "~ paradox"
