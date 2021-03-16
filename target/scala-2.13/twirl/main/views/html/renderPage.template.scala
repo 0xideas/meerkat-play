@@ -23,8 +23,8 @@ Seq[Any](format.raw/*2.1*/("""
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" type="text/css" href="controllers.Assets.at("assets/stylesheets/plugins.css")">
-<link rel="stylesheet" type="text/css" href="controllers.Assets.at("assets/stylesheets/style.css")">
+<link rel="stylesheet" type="text/css" href="assets/stylesheets/plugins.css">
+<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
 <style type="text/css">
 #freecssfooter"""),format.raw/*12.15*/("""{"""),format.raw/*12.16*/("""display:block;width:100%;padding:120px 0 20px;overflow:hidden;background-color:transparent;z-index:5000;text-align:center;"""),format.raw/*12.138*/("""}"""),format.raw/*12.139*/("""
 """),format.raw/*13.1*/("""#freecssfooter div#fcssholder div"""),format.raw/*13.34*/("""{"""),format.raw/*13.35*/("""display:none;"""),format.raw/*13.48*/("""}"""),format.raw/*13.49*/("""
@@ -74,7 +74,7 @@ Seq[Any](format.raw/*2.1*/("""
     <div class="container-fluid">
       <div class="masonry-blog clearfix">
         <div class="left-side">
-          <div class="masonry-box post-media"><img src="""),_display_(/*60.57*/{articles(0).image}),format.raw/*60.76*/(""" """),format.raw/*60.77*/("""alt="website template image" class="img-fluid">
+          <div class="masonry-box post-media"><img src="""),_display_(/*60.57*/{articles(0).image}),format.raw/*60.76*/(""" """),format.raw/*60.77*/("""style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
@@ -85,7 +85,7 @@ Seq[Any](format.raw/*2.1*/("""
           </div>
         </div>
         <div class="center-side">
-          <div class="masonry-box post-media"><img src="""),_display_(/*71.57*/{articles(1).image}),format.raw/*71.76*/(""" """),format.raw/*71.77*/("""alt="website template image" class="img-fluid">
+          <div class="masonry-box post-media"><img src="""),_display_(/*71.57*/{articles(1).image}),format.raw/*71.76*/(""" """),format.raw/*71.77*/("""style="max-width:47%;max-height:47%;object-fit:cover;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
@@ -94,7 +94,7 @@ Seq[Any](format.raw/*2.1*/("""
               </div>
             </div>
           </div>
-          <div class="masonry-box small-box post-media"><img src="""),_display_(/*80.67*/{articles(2).image}),format.raw/*80.86*/(""" """),format.raw/*80.87*/("""alt="website template image" class="img-fluid">
+          <div class="masonry-box small-box post-media"><img src="""),_display_(/*80.67*/{articles(2).image}),format.raw/*80.86*/(""" """),format.raw/*80.87*/("""style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
@@ -103,7 +103,7 @@ Seq[Any](format.raw/*2.1*/("""
               </div>
             </div>
           </div>
-          <div class="masonry-box small-box post-media"><img src="""),_display_(/*89.67*/{articles(3).image}),format.raw/*89.86*/(""" """),format.raw/*89.87*/("""alt="website template image" class="img-fluid">
+          <div class="masonry-box small-box post-media"><img src="""),_display_(/*89.67*/{articles(3).image}),format.raw/*89.86*/(""" """),format.raw/*89.87*/("""style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
@@ -114,7 +114,7 @@ Seq[Any](format.raw/*2.1*/("""
           </div>
         </div>
         <div class="right-side hidden-md-down">
-          <div class="masonry-box post-media"><img src="""),_display_(/*100.57*/{articles(4).image}),format.raw/*100.76*/(""" """),format.raw/*100.77*/("""alt="website template image" class="img-fluid">
+          <div class="masonry-box post-media"><img src="""),_display_(/*100.57*/{articles(4).image}),format.raw/*100.76*/(""" """),format.raw/*100.77*/("""style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
@@ -165,10 +165,10 @@ var gaProperty = 'UA-120201777-1';var disableStr = 'ga-disable-' + gaProperty;if
 
               /*
                   -- GENERATED --
-                  DATE: 2021-03-15T20:19:39.151349
+                  DATE: 2021-03-16T12:37:07.612405
                   SOURCE: /home/leon/projects/meerkat/meerkat-play/app/views/renderPage.scala.html
-                  HASH: 91c5bd82fa5ae545aa21fb615c00710a039db4e8
-                  MATRIX: 600->1|741->49|768->50|1281->535|1310->536|1461->658|1491->659|1519->660|1580->693|1609->694|1650->707|1679->708|1707->709|1780->754|1809->755|1851->769|1880->770|1908->771|1983->818|2012->819|2065->844|2094->845|2122->846|2337->1033|2366->1034|2396->1037|2678->1292|2706->1293|4295->2855|4335->2874|4364->2875|4592->3076|4635->3098|4889->3325|4929->3344|4958->3345|5186->3546|5229->3568|5429->3741|5469->3760|5498->3761|5726->3962|5769->3984|5952->4140|5992->4159|6021->4160|6249->4361|6292->4383|6529->4592|6570->4611|6600->4612|6829->4813|6873->4835|7674->5606|7705->5607|7761->5633|7792->5634|7821->5635|7869->5654|7899->5655|8087->5813|8118->5814|8147->5815|8200->5839|8230->5840|8309->5890|8339->5891|8404->5926|8435->5927|8586->6048|8617->6049
+                  HASH: 209703ce3afff8aca4767497701c27d2d0dd8430
+                  MATRIX: 600->1|741->49|768->50|1231->485|1260->486|1411->608|1441->609|1469->610|1530->643|1559->644|1600->657|1629->658|1657->659|1730->704|1759->705|1801->719|1830->720|1858->721|1933->768|1962->769|2015->794|2044->795|2072->796|2287->983|2316->984|2346->987|2628->1242|2656->1243|4245->2805|4285->2824|4314->2825|4582->3066|4625->3088|4879->3315|4919->3334|4948->3335|5231->3591|5274->3613|5474->3786|5514->3805|5543->3806|5811->4047|5854->4069|6037->4225|6077->4244|6106->4245|6374->4486|6417->4508|6654->4717|6695->4736|6725->4737|6994->4978|7038->5000|7839->5771|7870->5772|7926->5798|7957->5799|7986->5800|8034->5819|8064->5820|8252->5978|8283->5979|8312->5980|8365->6004|8395->6005|8474->6055|8504->6056|8569->6091|8600->6092|8751->6213|8782->6214
                   LINES: 14->1|19->2|20->3|29->12|29->12|29->12|29->12|30->13|30->13|30->13|30->13|30->13|31->14|31->14|31->14|31->14|31->14|32->15|32->15|32->15|32->15|32->15|33->16|36->19|36->19|37->20|42->25|42->25|77->60|77->60|77->60|81->64|81->64|88->71|88->71|88->71|92->75|92->75|97->80|97->80|97->80|101->84|101->84|106->89|106->89|106->89|110->93|110->93|117->100|117->100|117->100|121->104|121->104|145->128|145->128|145->128|145->128|146->129|146->129|146->129|146->129|146->129|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130
                   -- GENERATED --
               */

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/leon/projects/meerkat/meerkat-play/conf/routes
-// @DATE:Mon Mar 15 20:19:38 CET 2021
+// @DATE:Tue Mar 16 12:32:39 CET 2021
 
 
 package router {
