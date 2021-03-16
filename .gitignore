@@ -17,3 +17,5 @@
 !requestCheck.sh
 
 .metals/
+
+target/*

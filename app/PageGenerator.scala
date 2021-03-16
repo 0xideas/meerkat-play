@@ -21,7 +21,7 @@ object PageGenerator{
 
     case class Article(headline: String, image: String)
     val h1 = List(List(Article("99 Recipes for Lockdown", food1), Article("Don't Move - Stay Healthy", food2) ),
-                    List(Article("Do I Really Need This Gadget?", gadget1), Article("Second Hand Tech is Now In Vogue", gadget2)),
+                    //List(Article("Do I Really Need This Gadget?", gadget1), Article("Second Hand Tech is Now In Vogue", gadget2)),
                     List(Article("What is Your Pet Like", pet1), Article("Pet Antics", pet2)),
                     List(Article("Should We Hug Trees More", trees1), Article("The Benefits of Trees for Mental Health", trees2)),
                     List(Article("6 Things to Discover in your Neighbourhood", neighbourhood1), Article("Local Exploration is Catching On", neighbourhood2)),

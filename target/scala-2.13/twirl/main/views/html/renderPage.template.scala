@@ -30,7 +30,7 @@ Seq[Any](format.raw/*2.1*/("""
 """),format.raw/*13.1*/("""#freecssfooter div#fcssholder div"""),format.raw/*13.34*/("""{"""),format.raw/*13.35*/("""display:none;"""),format.raw/*13.48*/("""}"""),format.raw/*13.49*/("""
 """),format.raw/*14.1*/("""#freecssfooter div#fcssholder div:first-child"""),format.raw/*14.46*/("""{"""),format.raw/*14.47*/("""display:block;"""),format.raw/*14.61*/("""}"""),format.raw/*14.62*/("""
 """),format.raw/*15.1*/("""#freecssfooter div#fcssholder div:first-child a"""),format.raw/*15.48*/("""{"""),format.raw/*15.49*/("""float:none;margin:0 auto;"""),format.raw/*15.74*/("""}"""),format.raw/*15.75*/("""
-"""),format.raw/*16.1*/("""</style><script async="" src="../css/analytics.js"></script><script type="text/javascript" async="" src="../css/bsa.js"></script></head>
+"""),format.raw/*16.1*/("""</style></head>
 <body>
 <script type="text/javascript">
 (function()"""),format.raw/*19.12*/("""{"""),format.raw/*19.13*/("""
@@ -41,7 +41,7 @@ Seq[Any](format.raw/*2.1*/("""
   (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
 """),format.raw/*25.1*/("""}"""),format.raw/*25.2*/(""")();
 </script>
-<div id="preloader" style="display: none;"><img class="preloader" src="../css/loader.gif" alt="website template image" style="display: none;"></div>
+<div id="preloader" style="display: none;"><img class="preloader" src="./public/images/loader.gif" alt="website template image" style="display: none;"></div>
 <div id="wrapper">
   <div class="collapse top-search" id="collapseExample">
     <div class="card card-block">
@@ -57,7 +57,7 @@ Seq[Any](format.raw/*2.1*/("""
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="logo"><a ><img src="../css/logo.png" alt="website template image"></a></div>
+          <div class="logo"><a ><img src="./public/images/logo.png" alt="website template image"></a></div>
         </div>
       </div>
     </div>
@@ -126,25 +126,23 @@ Seq[Any](format.raw/*2.1*/("""
         </div>
       </div>
     </div>
+    <br>
+    <br>
+    <br><br><br>
   </section>
-   <footer class="footer">
+   <footer class="footer" style="opacity:0.1;">
     
   </footer>
-  <div class="dmtop" style="bottom: -100px;">Scroll to Top</div>
 </div>
-<script src="../css/jquery.min.js"></script>
-<script src="../css/tether.min.js"></script>
-<script src="../css/bootstrap.min.js"></script>
-<script src="../css/custom.js"></script>
 <div id="freecssfooter">
   <div id="fcssholder">
     <div id="bsap_2365" class="bsarocks bsap_b893e54e42ad5b76e7b252f59be18e67"></div>
   </div>
 </div>
 <script type="text/javascript">
-var gaProperty = 'UA-120201777-1';var disableStr = 'ga-disable-' + gaProperty;if (document.cookie.indexOf(disableStr + '=true') > -1) """),format.raw/*128.135*/("""{"""),format.raw/*128.136*/("""window[disableStr] = true;"""),format.raw/*128.162*/("""}"""),format.raw/*128.163*/("""
-"""),format.raw/*129.1*/("""function gaOptout()"""),format.raw/*129.20*/("""{"""),format.raw/*129.21*/("""document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2045 23:59:59 UTC; path=/';window[disableStr] = true;alert('Google Tracking has been deactivated');"""),format.raw/*129.179*/("""}"""),format.raw/*129.180*/("""
-"""),format.raw/*130.1*/("""(function(i,s,o,g,r,a,m)"""),format.raw/*130.25*/("""{"""),format.raw/*130.26*/("""i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()"""),format.raw/*130.76*/("""{"""),format.raw/*130.77*/("""(i[r].q=i[r].q||[]).push(arguments)"""),format.raw/*130.112*/("""}"""),format.raw/*130.113*/(""",i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)"""),format.raw/*130.234*/("""}"""),format.raw/*130.235*/(""")(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-120201777-1', 'auto');ga('set', 'anonymizeIp', true);ga('send', 'pageview');
+var gaProperty = 'UA-120201777-1';var disableStr = 'ga-disable-' + gaProperty;if (document.cookie.indexOf(disableStr + '=true') > -1) """),format.raw/*126.135*/("""{"""),format.raw/*126.136*/("""window[disableStr] = true;"""),format.raw/*126.162*/("""}"""),format.raw/*126.163*/("""
+"""),format.raw/*127.1*/("""function gaOptout()"""),format.raw/*127.20*/("""{"""),format.raw/*127.21*/("""document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2045 23:59:59 UTC; path=/';window[disableStr] = true;alert('Google Tracking has been deactivated');"""),format.raw/*127.179*/("""}"""),format.raw/*127.180*/("""
+"""),format.raw/*128.1*/("""(function(i,s,o,g,r,a,m)"""),format.raw/*128.25*/("""{"""),format.raw/*128.26*/("""i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()"""),format.raw/*128.76*/("""{"""),format.raw/*128.77*/("""(i[r].q=i[r].q||[]).push(arguments)"""),format.raw/*128.112*/("""}"""),format.raw/*128.113*/(""",i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)"""),format.raw/*128.234*/("""}"""),format.raw/*128.235*/(""")(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-120201777-1', 'auto');ga('set', 'anonymizeIp', true);ga('send', 'pageview');
 </script>
 
 </body>
@@ -165,11 +163,11 @@ var gaProperty = 'UA-120201777-1';var disableStr = 'ga-disable-' + gaProperty;if
 
               /*
                   -- GENERATED --
-                  DATE: 2021-03-16T13:46:06.765568
+                  DATE: 2021-03-16T16:19:08.308880
                   SOURCE: /home/leon/projects/meerkat/meerkat-play/app/views/renderPage.scala.html
-                  HASH: 1fe209f9ec69d52b648f87deb20145fa4efdec47
-                  MATRIX: 600->1|741->49|768->50|1238->492|1267->493|1418->615|1448->616|1476->617|1537->650|1566->651|1607->664|1636->665|1664->666|1737->711|1766->712|1808->726|1837->727|1865->728|1940->775|1969->776|2022->801|2051->802|2079->803|2294->990|2323->991|2353->994|2635->1249|2663->1250|4252->2812|4292->2831|4321->2832|4589->3073|4632->3095|4886->3322|4926->3341|4955->3342|5238->3598|5281->3620|5481->3793|5521->3812|5550->3813|5818->4054|5861->4076|6044->4232|6084->4251|6113->4252|6381->4493|6424->4515|6661->4724|6702->4743|6732->4744|7001->4985|7045->5007|7846->5778|7877->5779|7933->5805|7964->5806|7993->5807|8041->5826|8071->5827|8259->5985|8290->5986|8319->5987|8372->6011|8402->6012|8481->6062|8511->6063|8576->6098|8607->6099|8758->6220|8789->6221
-                  LINES: 14->1|19->2|20->3|29->12|29->12|29->12|29->12|30->13|30->13|30->13|30->13|30->13|31->14|31->14|31->14|31->14|31->14|32->15|32->15|32->15|32->15|32->15|33->16|36->19|36->19|37->20|42->25|42->25|77->60|77->60|77->60|81->64|81->64|88->71|88->71|88->71|92->75|92->75|97->80|97->80|97->80|101->84|101->84|106->89|106->89|106->89|110->93|110->93|117->100|117->100|117->100|121->104|121->104|145->128|145->128|145->128|145->128|146->129|146->129|146->129|146->129|146->129|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130|147->130
+                  HASH: 14dbff34aa5508bc75e40a0b51d10005c6345bb5
+                  MATRIX: 600->1|741->49|768->50|1238->492|1267->493|1418->615|1448->616|1476->617|1537->650|1566->651|1607->664|1636->665|1664->666|1737->711|1766->712|1808->726|1837->727|1865->728|1940->775|1969->776|2022->801|2051->802|2079->803|2173->869|2202->870|2232->873|2514->1128|2542->1129|4149->2709|4189->2728|4218->2729|4486->2970|4529->2992|4783->3219|4823->3238|4852->3239|5135->3495|5178->3517|5378->3690|5418->3709|5447->3710|5715->3951|5758->3973|5941->4129|5981->4148|6010->4149|6278->4390|6321->4412|6558->4621|6599->4640|6629->4641|6898->4882|6942->4904|7555->5487|7586->5488|7642->5514|7673->5515|7702->5516|7750->5535|7780->5536|7968->5694|7999->5695|8028->5696|8081->5720|8111->5721|8190->5771|8220->5772|8285->5807|8316->5808|8467->5929|8498->5930
+                  LINES: 14->1|19->2|20->3|29->12|29->12|29->12|29->12|30->13|30->13|30->13|30->13|30->13|31->14|31->14|31->14|31->14|31->14|32->15|32->15|32->15|32->15|32->15|33->16|36->19|36->19|37->20|42->25|42->25|77->60|77->60|77->60|81->64|81->64|88->71|88->71|88->71|92->75|92->75|97->80|97->80|97->80|101->84|101->84|106->89|106->89|106->89|110->93|110->93|117->100|117->100|117->100|121->104|121->104|143->126|143->126|143->126|143->126|144->127|144->127|144->127|144->127|144->127|145->128|145->128|145->128|145->128|145->128|145->128|145->128|145->128|145->128
                   -- GENERATED --
               */
           
