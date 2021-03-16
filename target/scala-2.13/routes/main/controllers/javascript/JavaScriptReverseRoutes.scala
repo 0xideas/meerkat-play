@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/leon/projects/meerkat/meerkat-play/conf/routes
-// @DATE:Tue Mar 16 12:32:39 CET 2021
+// @DATE:Tue Mar 16 13:54:54 CET 2021
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -19,11 +19,11 @@ package controllers.javascript {
 
   
     // @LINE:2
-    def at: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.Assets.at",
+    def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Assets.versioned",
       """
         function(file1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("file", file1)})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "public/" + (""" + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + """)("file", file1)})
         }
       """
     )

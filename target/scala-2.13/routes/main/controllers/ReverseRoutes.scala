@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/leon/projects/meerkat/meerkat-play/conf/routes
-// @DATE:Tue Mar 16 12:32:39 CET 2021
+// @DATE:Tue Mar 16 13:54:54 CET 2021
 
 import play.api.mvc.Call
 
@@ -18,9 +18,9 @@ package controllers {
 
   
     // @LINE:2
-    def at(file:String): Call = {
+    def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
-      Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[String]].unbind("file", file))
+      Call("GET", _prefix + { _defaultPrefix } + "public/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
     }
   
   }

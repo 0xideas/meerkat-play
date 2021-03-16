@@ -32,7 +32,9 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings"
     )
   )
-  
+
+resourceDirectory in Assets := (sourceDirectory in Compile).value / "public"
+
 //addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
 
