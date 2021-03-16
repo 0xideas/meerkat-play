@@ -22,6 +22,9 @@ class MeerkatRouter @Inject()(controller: MeerkatController) extends SimpleRoute
     case POST(p"/updateSession") =>
       controller.updateSession
 
+    case POST(p"/updateInternal") =>
+      controller.updateInternal
+
     case GET(p"/export") =>
       controller.export
 

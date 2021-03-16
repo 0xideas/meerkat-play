@@ -1,4 +1,4 @@
-@(articles: List[meerkat.PageGenerator.Article])
+@(articles: List[meerkat.PageGenerator.Article], headlines: List[(Int, List[Int])])
 
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,14 +15,12 @@
 #freecssfooter div#fcssholder div:first-child a{float:none;margin:0 auto;}
 </style></head>
 <body>
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript", language="javascript">
+function updateInternal(id, headlines){
+  $(document).ready(function() {
+    $.post("http://localhost:9000/updateInternal", { articleId: id, headlines: headlines } );
+});
+};
 </script>
 <div id="preloader" style="display: none;"><img class="preloader" src="./public/images/loader.gif" alt="website template image" style="display: none;"></div>
 <div id="wrapper">
@@ -49,7 +47,6 @@
     <div class="container">
       <nav class="navbar navbar-inverse navbar-toggleable-md">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
       </nav>
     </div>
   </header>
@@ -61,19 +58,19 @@
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
-                  <h4><a href="">@{articles(0).headline}</a></h4>
-                  <small></small><small></small></div>
+
+                  <h4><a href="#" onclick="javascript:updateInternal(@{articles(0).id}, @{headlines});" id="first">@{articles(0).headline}</a></h4></div>
               </div>
             </div>
           </div>
         </div>
         <div class="center-side">
-          <div class="masonry-box post-media"><img src=@{articles(1).image} style="max-width:47%;max-height:47%;object-fit:cover;" alt="website template image" class="img-fluid">
+          <div class="masonry-box small-box post-media"><img src=@{articles(1).image} style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
-                  <h4><a href="">@{articles(1).headline}</a></h4>
-                  <small></small></div>
+                  <h4><a href="javascript:updateInternal(@{articles(1).id}, @{headlines})">@{articles(1).headline}</a></h4>
+                </div>
               </div>
             </div>
           </div>
@@ -81,27 +78,36 @@
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
-                  <h4><a href="">@{articles(2).headline}</a></h4>
+                  <h4><a href="javascript:updateInternal(@{articles(2).id}, @{headlines})">@{articles(2).headline}</a></h4>
                 </div>
               </div>
             </div>
           </div>
-          <div class="masonry-box small-box post-media"><img src=@{articles(3).image} style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
+          <div class="masonry-box small-box post-media"><img src=@{articles(3).image} style="max-width:98%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
-                  <h4><a href="">@{articles(3).headline}</a></h4>
+                  <h4><a href="javascript:updateInternal(@{articles(3).id}, @{headlines})">@{articles(3).headline}</a></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="masonry-box small-box post-media"><img src=@{articles(4).image} style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
+            <div class="shadoweffect">
+              <div class="shadow-desc">
+                <div class="blog-meta">
+                  <h4><a href="javascript:updateInternal(@{articles(4).id}, @{headlines})">@{articles(4).headline}</a></h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="right-side hidden-md-down">
-          <div class="masonry-box post-media"><img src=@{articles(4).image} style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
+          <div class="masonry-box post-media"><img src=@{articles(5).image} style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
-                  <h4><a href="">@{articles(4).headline}</a></h4>
+                  <h4><a href="javascript:updateInternal(@{articles(5).id}, @{headlines})">@{articles(5).headline}</a></h4>
                   <small></small></div>
               </div>
             </div>

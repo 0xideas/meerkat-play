@@ -8,9 +8,11 @@ import play.api.data.Form
 import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.circe.Circe
+import play.api.mvc.Results._
 
 import scala.concurrent.{ExecutionContext, Future}
 import meerkat.PageGenerator.{pageGenerator, Article}
+import controllers.routes
 
 /**
   * Takes HTTP requests and produces JSON.
@@ -68,6 +70,11 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     processJsonUpdate(request)
   }
 
+  def updateInternal: Action[AnyContent] = PostAction.async { implicit request =>
+    logger.trace("update: ")
+    processJsonUpdateInternal(request)
+  }
+
   def updateSession: Action[AnyContent] = PostAction.async { implicit request =>
     logger.trace("update: ")
     processJsonUpdateSession(request)
@@ -81,7 +88,8 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
   def renderPage: Action[AnyContent] = PostAction.async { implicit request =>
     val headlines: List[(Int, Article, List[Int])] = pageGenerator.generate()
     val headlines2 = headlines.map(_._2)
-    val html = views.html.renderPage(headlines2)
+    val headlines3 = headlines.map(h => (h._1, h._3))
+    val html = views.html.renderPage(headlines2, headlines3)
     Future.successful(Ok(html).as("text/html"))
   }
 
@@ -111,6 +119,25 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
       val input2 = input.headlines.map(i => idsToList(i))
       pageGenerator.update(articleId, input2)
       Future.successful(Ok("Update successful"))
+    }
+    formUpdate.bindFromRequest().fold(failure, success)
+  }
+
+
+  private def processJsonUpdateInternal[A](implicit request: MeerkatRequest[A]): Future[Result] = {
+    def failure(badForm: Form[Update]): Future[Result] = {
+      Future.successful(BadRequest(badForm.errorsAsJson))
+    }
+
+    def success(input: Update): Future[Result] = {
+      val articleId = input.articleId match {
+        case(GlobalVariables.NO_ARTICLE_SELECTED_ID) => None
+        case(i) => Some(i)
+      }
+      val input2 = input.headlines.map(i => idsToList(i))
+      pageGenerator.update(articleId, input2)
+      println("updateInternal")
+      Future.successful(Redirect("http://localhost:9000/"))
     }
     formUpdate.bindFromRequest().fold(failure, success)
   }
