@@ -1,0 +1,2 @@
+->         /              meerkat.MeerkatRouter
+GET        /public/*file  controllers.Assets.versioned(path="/public", file: Asset)
