@@ -1,4 +1,4 @@
-@(articles: List[meerkat.PageGenerator.Article], headlines: List[(Int, List[Int])])
+@(articles: List[meerkat.PageGenerator.Article], headlines: List[meerkat.MeerkatControllerTypes.CandidateGenerateeId])
 
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,27 +13,36 @@
 #freecssfooter div#fcssholder div{display:none;}
 #freecssfooter div#fcssholder div:first-child{display:block;}
 #freecssfooter div#fcssholder div:first-child a{float:none;margin:0 auto;}
-</style></head>
-<body>
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript", language="javascript">
-function updateInternal(id, headlines){
-  $(document).ready(function() {
-    $.post("http://localhost:9000/updateInternal", { articleId: id, headlines: headlines } );
-});
-};
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script   type="text/javascript", language="javascript">
+  function updateInternal(id, headlines){
+    let preprocess = headlines.split("CandidateGenerateeId(").slice(1).map(i => i.split(","))
+    let articleIds = preprocess.map(i =>  parseInt(i.slice(0,1)[0]))
+    let headlineIds = preprocess.map(i => (i.slice(1)[0])).map(i => eval(i.replace("List(", "[").replace("))", "]")))
+    let arr2 = []
+    for(i = 0; i < articleIds.length; i++) {arr2.push({"articleId": articleIds[i], "generateeIds": headlineIds[i]})}
+    alert(JSON.stringify(arr2))
+
+    $.ajax({
+      url:"http://localhost:9000/update",
+      type:"POST",
+      data:JSON.stringify({ articleId: id, headlines: arr2 }),
+      contentType:"application/json; charset=utf-8",
+      dataType:"json",
+      success: function(){alert( "Success" );},
+      fail: function(){alert( "Error");}
+    })
+  };
+  function checkifitWorks(a){
+    return(a)
+  };
 </script>
+</head>
+<body>
+
 <div id="preloader" style="display: none;"><img class="preloader" src="./public/images/loader.gif" alt="website template image" style="display: none;"></div>
 <div id="wrapper">
-  <div class="collapse top-search" id="collapseExample">
-    <div class="card card-block">
-      <div class="newsletter-widget text-center">
-        <form action="https://www.free-css.com/assets/files/free-css-templates/preview/page243/cloapedia/#" method="post" class="form-inline">
-          <input type="text" class="form-control" placeholder="What you are looking for?">
-          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-    </div>
-  </div>
   <div class="header-section">
     <div class="container">
       <div class="row">
@@ -57,9 +66,9 @@ function updateInternal(id, headlines){
           <div class="masonry-box post-media"><img src=@{articles(0).image} style="max-width:100%;max-height:100%;" alt="website template image" class="img-fluid">
             <div class="shadoweffect">
               <div class="shadow-desc">
-                <div class="blog-meta">
+                <div class="blog-meta" )>
 
-                  <h4><a href="#" onclick="javascript:updateInternal(@{articles(0).id}, @{headlines});" id="first">@{articles(0).headline}</a></h4></div>
+                  <h4><a href="" data-articleid=@{articles(0).id} data-headlines=@{headlines} onclick="updateInternal(this.getAttribute('data-articleid'), this.getAttribute('data-headlines'))" class="article">@{articles(0).headline}</a></h4></div>
               </div>
             </div>
           </div>
@@ -78,7 +87,7 @@ function updateInternal(id, headlines){
             <div class="shadoweffect">
               <div class="shadow-desc">
                 <div class="blog-meta">
-                  <h4><a href="javascript:updateInternal(@{articles(2).id}, @{headlines})">@{articles(2).headline}</a></h4>
+                  <h4><a href="#" onclick="updateInternal(@{articles(2).id}, @{headlines})">@{articles(2).headline}</a></h4>
                 </div>
               </div>
             </div>
