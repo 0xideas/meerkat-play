@@ -35,7 +35,6 @@ class RequestHandler @Inject()(webCommands: WebCommands,
       }
     }
   }
-
   private def isREST(request: RequestHeader) = {
     request.uri match {
       case uri: String if uri.contains("post") => true
