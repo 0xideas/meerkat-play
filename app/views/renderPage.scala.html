@@ -24,7 +24,7 @@
     let arr2 = []
     for(i = 0; i < articleIds.length; i++) {arr2.push({"articleId": articleIds[i], "generateeIds": headlineIds[i]})}
     $.ajax({
-      url:"http://localhost:5000/update",
+      url:"http://salty-basin-55497.herokuapp.com/update",
       type:"POST",
       data:JSON.stringify({ articleId: id, headlines: arr2 }),
       contentType:"application/json; charset=utf-8",
