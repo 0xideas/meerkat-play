@@ -37,6 +37,7 @@ resourceDirectory in Assets := (sourceDirectory in Compile).value / "public"
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
+resolvers += Resolver.file("PageGenerator", file("/home/leon/projects/meerkat/meerkat-play/lib/adaensemble_2.13-0.1.jar"))
 
 
 lazy val gatlingVersion = "3.3.1"
