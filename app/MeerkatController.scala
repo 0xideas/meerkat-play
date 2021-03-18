@@ -16,6 +16,7 @@ import controllers.routes
 import io.circe.generic.auto._
 import io.circe.syntax._
 import io.circe._, io.circe.generic.semiauto._
+import io.circe.parser._
 
 object MeerkatControllerTypes{
 
@@ -33,6 +34,8 @@ object MeerkatControllerTypes{
 
   case class Subpage[ArticleID, Generatee](articleId: ArticleID, generatee: Generatee, generateeId: List[Int])
   implicit val subpageFormat = Json.format[Subpage[Int, String]]
+
+  case class JsonContainer(value: Json)
 
 
 }
@@ -67,7 +70,6 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     )
   }
 
-
   def generate: Action[AnyContent] = PostAction.async { implicit request =>
     logger.trace("generate: ")
     val response = pageGenerator.generate().map{case(a, b, c) => (a, b.headline, c)}
@@ -82,6 +84,26 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
   def updateSession: Action[AnyContent] = PostAction.async { implicit request =>
     logger.trace("update: ")
     processJsonUpdateSession(request)
+  }
+  import play.api.libs.json.{Json => PlayJson}
+
+  def set = Action { request =>
+    val parameters = request.body.asJson.get.toString()
+    println(parameters)
+    io.circe.parser.parse(parameters) match {
+      case(Right(pars)) => {
+        pageGenerator.set(pars)
+        pageGenerator.export() == pars match {
+          case(true) => Ok("Set was successful")
+          case(_) => Ok("Json could not be used to set parameters")
+        }
+      }
+      case(Left(err)) => {
+        Ok("Set not successful: " + err.toString())
+      }
+    }
+    
+    
   }
 
   def export: Action[AnyContent] = PostAction.async { implicit request =>
