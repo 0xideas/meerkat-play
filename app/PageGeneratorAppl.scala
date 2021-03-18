@@ -5,7 +5,7 @@ import ada.products.PageGenerator
 import ada.enhancements._
 import io.circe.generic.auto._, io.circe.syntax._
 
-object PageGenerator{
+object PageGeneratorAppl{
     val food1 = "./public/images/headers/food1.jpeg"
     val food2 = "./public/images/headers/food2.jpeg"
     val gadget1 = "./public/images/headers/gadget1.jpeg"

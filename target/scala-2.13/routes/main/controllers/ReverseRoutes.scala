@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/leon/projects/meerkat/meerkat-play/conf/routes
-// @DATE:Thu Mar 18 15:07:28 CET 2021
+// @DATE:Thu Mar 18 19:08:39 CET 2021
 
 import play.api.mvc.Call
 

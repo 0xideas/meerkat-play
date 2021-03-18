@@ -1,7 +1,8 @@
 import sbt.Keys._
 import play.sbt.PlaySettings
 
-unmanagedJars in Compile += file("lib/adaensemble_2.13-0.1.jar")
+unmanagedJars in Compile += file("/home/leon/projects/meerkat/meerkat-play/lib/adaensemble_2.13-0.1.jar")
+//unmanagedResources in (Compile) ++= Seq(file(baseDirectory.value.getParentFile.getAbsolutePath + "/file.json"))
 
 val circeVersion = "0.12.3"
 val breezeVersion = "1.1"
@@ -31,14 +32,15 @@ lazy val root = (project in file("."))
       "-feature",
       "-deprecation",
       "-Xfatal-warnings"
+    ),
+    unmanagedBase := baseDirectory.value / "lib",
+    updateOptions := updateOptions.value.withCachedResolution(false)
     )
-  )
 
 resourceDirectory in Assets := (sourceDirectory in Compile).value / "public"
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
-updateOptions := updateOptions.value.withCachedResolution(false)
 
 herokuAppName in Compile := "salty-basin-55497"
 
@@ -65,3 +67,9 @@ lazy val docs = (project in file("docs")).enablePlugins(ParadoxPlugin).
   )
 
 
+assemblyMergeStrategy in assembly := {
+ case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+ case x => MergeStrategy.first
+}
+
+herokuFatJar in Compile := Some((assemblyOutputPath in assembly).value)

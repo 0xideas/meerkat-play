@@ -11,7 +11,7 @@ import play.api.libs.circe.Circe
 import play.api.mvc.Results._
 
 import scala.concurrent.{ExecutionContext, Future}
-import meerkat.PageGenerator.{pageGenerator, Article}
+import meerkat.PageGeneratorAppl.{pageGenerator, Article}
 import controllers.routes
 import io.circe.generic.auto._
 import io.circe.syntax._
