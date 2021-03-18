@@ -13,3 +13,7 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.15")
 
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.5.0")
+
+addSbtPlugin("com.heroku" % "sbt-heroku" % "2.1.4")
+
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.15.0")

@@ -25,6 +25,7 @@ lazy val root = (project in file("."))
       "org.scalanlp" %% "breeze" % breezeVersion,
       "org.scalanlp" %% "breeze-natives" % breezeVersion,
       "org.scalanlp" %% "breeze-viz" % breezeVersion
+
     ),
     scalacOptions ++= Seq(
       "-feature",
@@ -37,8 +38,9 @@ resourceDirectory in Assets := (sourceDirectory in Compile).value / "public"
 
 //addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.2")
 
-resolvers += Resolver.file("PageGenerator", file("/home/leon/projects/meerkat/meerkat-play/lib/adaensemble_2.13-0.1.jar"))
+updateOptions := updateOptions.value.withCachedResolution(false)
 
+herokuAppName in Compile := "salty-basin-55497"
 
 lazy val gatlingVersion = "3.3.1"
 lazy val gatling = (project in file("gatling"))
