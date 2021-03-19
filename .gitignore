@@ -10,6 +10,7 @@
 !*.gif
 !*adaensemble_2.13-0.1.jar
 !*.conf
+!*.woff2
 
 !build.sbt
 !.gitignore
