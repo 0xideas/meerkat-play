@@ -110,6 +110,7 @@ class MeerkatBaseController @Inject()(pcc: MeerkatControllerComponents)
     with RequestMarkerContext {
   override protected def controllerComponents: ControllerComponents = pcc
 
-  def PostAction: MeerkatActionBuilder = pcc.postActionBuilder
+  def PostAction: MeerkatAMeerkatBasectionBuilder = pcc.postActionBuilder
 
 }
+
