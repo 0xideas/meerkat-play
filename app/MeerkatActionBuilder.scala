@@ -105,11 +105,4 @@ case class MeerkatControllerComponents @Inject()(
 /**
   * Exposes actions and handler to the PostController by wiring the injected state into the base class.
   */
-class MeerkatBaseController @Inject()(pcc: MeerkatControllerComponents)
-    extends BaseController
-    with RequestMarkerContext {
-  override protected def controllerComponents: ControllerComponents = pcc
 
-  def PostAction: MeerkatActionBuilder = pcc.postActionBuilder
-
-}
