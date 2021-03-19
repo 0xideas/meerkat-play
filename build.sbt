@@ -1,5 +1,6 @@
 import sbt.Keys._
 import play.sbt.PlaySettings
+import NativePackagerHelper._
 
 unmanagedJars in Compile += file("/home/leon/projects/meerkat/meerkat-play/lib/adaensemble_2.13-0.1.jar")
 //unmanagedResources in (Compile) ++= Seq(file(baseDirectory.value.getParentFile.getAbsolutePath + "/file.json"))
@@ -36,6 +37,8 @@ lazy val root = (project in file("."))
     unmanagedBase := baseDirectory.value / "lib",
     updateOptions := updateOptions.value.withCachedResolution(false)
     )
+
+mappings in Universal ++= directory("public")
 
 resourceDirectory in Assets := (sourceDirectory in Compile).value / "public"
 
