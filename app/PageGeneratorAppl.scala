@@ -6,18 +6,18 @@ import ada.enhancements._
 import io.circe.generic.auto._, io.circe.syntax._
 
 object PageGeneratorAppl{
-    val food1 = "@routes.Assets.at("images/headers/food1.jpeg")"
-    val food2 = "@routes.Assets.at("images/headers/food2.jpeg")"
-    val gadget1 = "@routes.Assets.at("images/headers/gadget1.jpeg")"
-    val gadget2 = "@routes.Assets.at("images/headers/gadget2.jpeg")"
-    val pet1 = "@routes.Assets.at("images/headers/pet1.jpeg")"
-    val pet2 = "@routes.Assets.at("images/headers/pet2.jpeg")"
-    val trees1 = "@routes.Assets.at("images/headers/tree1.jpeg")"
-    val trees2 = "@routes.Assets.at("images/headers/tree2.jpeg")"
-    val neighbourhood1 = "@routes.Assets.at("images/headers/neighbourhood1.jpeg")"
-    val neighbourhood2 = "@routes.Assets.at("images/headers/neighbourhood2.jpeg")"
-    val friends1 = "@routes.Assets.at("images/headers/friends1.jpeg")"
-    val friends2 = "@routes.Assets.at("images/headers/friends2.jpeg")"
+    val food1 = routes.Assets.at("images/headers/food1.jpeg")
+    val food2 = routes.Assets.at("images/headers/food2.jpeg")
+    val gadget1 = routes.Assets.at("images/headers/gadget1.jpeg")
+    val gadget2 = routes.Assets.at("images/headers/gadget2.jpeg")
+    val pet1 = routes.Assets.at("images/headers/pet1.jpeg")
+    val pet2 = routes.Assets.at("images/headers/pet2.jpeg")
+    val trees1 = routes.Assets.at("images/headers/tree1.jpeg")
+    val trees2 = routes.Assets.at("images/headers/tree2.jpeg")
+    val neighbourhood1 = routes.Assets.at("images/headers/neighbourhood1.jpeg")
+    val neighbourhood2 = routes.Assets.at("images/headers/neighbourhood2.jpeg")
+    val friends1 = routes.Assets.at("images/headers/friends1.jpeg")
+    val friends2 = routes.Assets.at("images/headers/friends2.jpeg")
 
     case class Article(id: Int, headline: String, image: String)
     val h1 = List(List(Article(0, "99 Recipes for Lockdown", food1), Article(0, "Don't Move - Stay Healthy", food1) ),
