@@ -7,18 +7,18 @@ import io.circe.generic.auto._, io.circe.syntax._
 import controllers.Assets
 
 object PageGeneratorAppl{
-    val food1 = Asset.at("/public", "/images/headers/food1.jpeg")
-    val food2 = Asset.at("/public", "/public/images/headers/food2.jpeg")
-    val gadget1 = Asset.at("/public", "/public/images/headers/gadget1.jpeg")
-    val gadget2 = Asset.at("/public", "/public/images/headers/gadget2.jpeg")
-    val pet1 = Asset.at("/public", "/public/images/headers/pet1.jpeg")
-    val pet2 = Asset.at("/public", "/public/images/headers/pet2.jpeg")
-    val trees1 = Asset.at("/public", "/public/images/headers/tree1.jpeg")
-    val trees2 = Asset.at("/public", "/public/images/headers/tree2.jpeg")
-    val neighbourhood1 = Asset.at("/public", "/public/images/headers/neighbourhood1.jpeg")
-    val neighbourhood2 = Asset.at("/public", "/public/images/headers/neighbourhood2.jpeg")
-    val friends1 = Asset.at("/public", "/public/images/headers/friends1.jpeg")
-    val friends2 = Asset.at("/public", "/public/images/headers/friends2.jpeg")
+    val food1 = Assets.at("/public", "/images/headers/food1.jpeg")
+    val food2 = Assets.at("/public", "/public/images/headers/food2.jpeg")
+    val gadget1 = Assets.at("/public", "/public/images/headers/gadget1.jpeg")
+    val gadget2 = Assets.at("/public", "/public/images/headers/gadget2.jpeg")
+    val pet1 = Assets.at("/public", "/public/images/headers/pet1.jpeg")
+    val pet2 = Assets.at("/public", "/public/images/headers/pet2.jpeg")
+    val trees1 = Assets.at("/public", "/public/images/headers/tree1.jpeg")
+    val trees2 = Assets.at("/public", "/public/images/headers/tree2.jpeg")
+    val neighbourhood1 = Assets.at("/public", "/public/images/headers/neighbourhood1.jpeg")
+    val neighbourhood2 = Assets.at("/public", "/public/images/headers/neighbourhood2.jpeg")
+    val friends1 = Assets.at("/public", "/public/images/headers/friends1.jpeg")
+    val friends2 = Assets.at("/public", "/public/images/headers/friends2.jpeg")
 
     case class Article(id: Int, headline: String, image: String)
     val h1 = List(List(Article(0, "99 Recipes for Lockdown", food1), Article(0, "Don't Move - Stay Healthy", food1) ),
