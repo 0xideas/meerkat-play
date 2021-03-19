@@ -1,5 +1,6 @@
 import sbt.Keys._
 import play.sbt.PlaySettings
+import com.typesafe.sbt.packager.MappingsHelper
 import NativePackagerHelper._
 
 unmanagedJars in Compile += file("/home/leon/projects/meerkat/meerkat-play/lib/adaensemble_2.13-0.1.jar")
@@ -38,7 +39,7 @@ lazy val root = (project in file("."))
     updateOptions := updateOptions.value.withCachedResolution(false)
     )
 
-mappings in Universal ++= directory("public")
+mappings in Universal ++= directory(baseDirectory.value / "public")
 
 resourceDirectory in Assets := (sourceDirectory in Compile).value / "public"
 
