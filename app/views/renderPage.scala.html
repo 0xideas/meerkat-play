@@ -1,4 +1,4 @@
-@(articles: List[meerkat.PageGeneratorAppl.Article], headlines: List[meerkat.MeerkatControllerTypes.CandidateGenerateeId])
+@(articles: List[meerkat.PageGeneratorAppl.Article], headlines: List[meerkat.MeerkatControllerTypes.CandidateGeneratee])
 
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,15 +18,15 @@
 <script   type="text/javascript", language="javascript">
 
   function updateInternal(id, headlines){
-    let preprocess = headlines.split("CandidateGenerateeId(").slice(1).map(i => i.split(","))
-    let articleIds = preprocess.map(i =>  parseInt(i.slice(0,1)[0]))
-    let headlineIds = preprocess.map(i => (i.slice(1)[0])).map(i => eval(i.replace("List(", "[").replace("))", "]")))
-    let arr2 = []
-    for(i = 0; i < articleIds.length; i++) {arr2.push({"articleId": articleIds[i], "generateeIds": headlineIds[i]})}
+    var preprocess = headlines.split("CandidateGeneratee(").slice(1).map(i => i.split(","))
+    var articleIds = preprocess.map(i => parseInt(i[0]))
+    var headlineIds = new Array();
+    for(var i = 0; i < articleIds.length; i++){headlineIds.push({"articleId":i, "generateeIds":preprocess[i][1].slice(0,-1)});}    
+    //alert(JSON.stringify({ articleId: id, headlines: headlineIds }))
     $.ajax({
-      url:"https://summer-brightness-83471.herokuapp.com/update",
+      url:"http://localhost:9000/update",
       type:"POST",
-      data:JSON.stringify({ articleId: id, headlines: arr2 }),
+      data:JSON.stringify({ articleId: id, headlines: headlineIds }),
       contentType:"application/json; charset=utf-8",
       dataType:"json",
       fail: function(){alert( "Error");}

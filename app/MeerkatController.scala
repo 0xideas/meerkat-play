@@ -17,19 +17,23 @@ import io.circe.generic.auto._
 import io.circe.syntax._
 import io.circe._, io.circe.generic.semiauto._
 import io.circe.parser._
+import ada.interface.{Tree, Leaf, Twig, Branch, Stub}
+import scala.language.implicitConversions
+import ada.enhancements.EncodeDecodeTree
 
 object MeerkatControllerTypes{
+  import play.api.libs.json.{JsValue => PlayJson, Json => PlayJsonObj}
 
-  case class CandidateGenerateeId(articleId: Int, generateeIds: List[Int])
-  implicit val candidateGenerateeIdDecoder: Decoder[CandidateGenerateeId] = deriveDecoder[CandidateGenerateeId]
-  implicit val candidateGenerateeIdEncoder: Encoder[CandidateGenerateeId] = deriveEncoder[CandidateGenerateeId]
+  val encodeDecodeTree = new EncodeDecodeTree[Int]()(i => i.toString, s => s.toInt)
+
+  case class CandidateGeneratee(articleId: Int, generateeIds: String)
   //implicit val formatGenerateeIds = Json.format[GenerateeIds]
-  implicit def idsToList: CandidateGenerateeId => (Int, List[Int]) = cand => (cand.articleId, cand.generateeIds) 
+  def idsToList: CandidateGeneratee => (Int, Tree[Int]) = cand => (cand.articleId, encodeDecodeTree.convertStringToTree(cand.generateeIds))
 
-  case class Update(articleId: Int, headlines: List[CandidateGenerateeId])
+  case class Update(articleId: Int, headlines: List[CandidateGeneratee])
   //implicit val formatUpdate = Json.format[Update]
 
-  case class UpdateSession(articleIds: List[Int], headlines: List[CandidateGenerateeId])
+  case class UpdateSession(articleIds: List[Int], headlines: List[CandidateGeneratee])
   //implicit val formatUpdate = Json.format[Update]
 
   case class Subpage[ArticleID, Generatee](articleId: ArticleID, generatee: Generatee, generateeId: List[Int])
@@ -46,7 +50,7 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     implicit ec: ExecutionContext)
     extends MeerkatBaseController(cc)
     with Circe{
-  
+
   import MeerkatControllerTypes._
   private val logger = Logger(getClass)
 
@@ -55,7 +59,7 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     Form(
       mapping(
         "articleId" -> number,
-        "headlines" -> list(mapping("articleId" -> number, "generateeIds" -> list(number))(CandidateGenerateeId.apply)(CandidateGenerateeId.unapply))
+        "headlines" -> list(mapping("articleId" -> number, "generateeIds" -> text)(CandidateGeneratee.apply)(CandidateGeneratee.unapply))
       )(Update.apply)(Update.unapply)
     )
   }
@@ -65,14 +69,14 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     Form(
       mapping(
         "articleIds" -> list(number),
-        "headlines" -> list(mapping("articleId" -> number, "generateeIds" -> list(number))(CandidateGenerateeId.apply)(CandidateGenerateeId.unapply))
+        "headlines" -> list(mapping("articleId" -> number, "generateeIds" -> text)(CandidateGeneratee.apply)(CandidateGeneratee.unapply))
       )(UpdateSession.apply)(UpdateSession.unapply)
     )
   }
 
   def generate: Action[AnyContent] = PostAction.async { implicit request =>
     logger.trace("generate: ")
-    val response = pageGenerator.generate().map{case(a, b, c) => (a, b.headline, c)}
+    val response = pageGenerator.generate().map{case(a, b, c) => (a, b.headline, encodeDecodeTree.convertTreeToString(c))}
     Future.successful(Ok(Json.obj("subpages" -> response)))
   }
   
@@ -85,7 +89,6 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     logger.trace("update: ")
     processJsonUpdateSession(request)
   }
-  import play.api.libs.json.{Json => PlayJson}
 
   def set = Action { request =>
     val parameters = request.body.asJson.get.toString()
@@ -103,7 +106,6 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
       }
     }
     
-    
   }
 
   def export: Action[AnyContent] = PostAction.async { implicit request =>
@@ -112,9 +114,9 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
   }
 
   def renderPage: Action[AnyContent] = PostAction.async { implicit request =>
-    val headlines: List[(Int, Article, List[Int])] = pageGenerator.generate()
+    val headlines: List[(Int, Article, Tree[Int])] = pageGenerator.generate()
     val headlines2 = headlines.map(_._2)
-    val headlines3 = headlines.map(h => CandidateGenerateeId(h._1, h._3))
+    val headlines3 = headlines.map(h => CandidateGeneratee(h._1,  encodeDecodeTree.convertTreeToString(h._3)))
     val html = views.html.renderPage(headlines2, headlines3)
     Future.successful(Ok(html).as("text/html"))
   }
@@ -131,9 +133,9 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
     formUpdateSession.bindFromRequest().fold(failure, success)
   }
 
-
   private def processJsonUpdate[A](implicit request: MeerkatRequest[A]): Future[Result] = {
     def failure(badForm: Form[Update]): Future[Result] = {
+      println("Update not successful")
       Future.successful(BadRequest(badForm.errorsAsJson))
     }
 
@@ -142,7 +144,7 @@ class MeerkatController @Inject()(cc: MeerkatControllerComponents)(
         case(GlobalVariables.NO_ARTICLE_SELECTED_ID) => None
         case(i) => Some(i)
       }
-      val input2 = input.headlines.map(i => idsToList(i))
+      val input2 = input.headlines.map(id => idsToList(id))
       pageGenerator.update(articleId, input2)
       println("Update successful")
       Future.successful(Ok("Update successful"))
