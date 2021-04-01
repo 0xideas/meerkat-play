@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=https://localhost:5000
+host=https://localhost:9000
 host=https://summer-brightness-83471.herokuapp.com
 
 echo "waking up..."
