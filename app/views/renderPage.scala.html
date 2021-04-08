@@ -21,7 +21,7 @@
     var preprocess = headlines.split("CandidateGeneratee(").slice(1).map(i => i.split(","))
     var articleIds = preprocess.map(i => parseInt(i[0]))
     var headlineIds = new Array();
-    for(var i = 0; i < articleIds.length; i++){headlineIds.push({"articleId":i, "generateeIds":preprocess[i][1].slice(0,-1)});}    
+    for(var i = 0; i < articleIds.length; i++){headlineIds.push({"articleId":articleIds[i], "generateeIds":preprocess[i][1].slice(0,-1)});}    
     //alert(JSON.stringify({ articleId: id, headlines: headlineIds }))
     $.ajax({
       url:"http://localhost:9000/update",
